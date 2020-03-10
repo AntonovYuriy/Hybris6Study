@@ -1,0 +1,210 @@
+#This is a template gitignore file, that should serve as a starting point for each hybris project
+
+#in case of optimizations, feel free to update this site
+
+##################
+Custom Ignores #
+##################
+data
+log
+roles
+temp
+
+########################
+Java generated files #
+########################
+*.class
+*.war
+*.ear
+*hmc.jar
+
+#########################
+IntelliJ generated files #
+#########################
+*.iml
+rebel.xml
+
+#########################
+Maven generated files #
+#########################
+target/
+
+######################
+OS generated files #
+######################
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+
+################################
+Sublime Text generated files #
+################################
+*.sublime-project
+*.sublime-workspace
+eclipsebin/
+
+##############
+Diff Files #
+##############
+*.orig
+
+######################
+Editing temp files #
+######################
+*~
+*#
+
+###########################
+Other unnecessary files #
+###########################
+.svn
+
+##############
+Exceptions #
+##############
+!xxx.jar
+
+##############################
+hybris Ant generated files #
+##############################
+gensrc/
+jalo/
+build.xml
+extensioninfo.xsd
+hmc.xsd
+platformhome.properties
+*-testclasses.xml
+*-webtestclasses.xml
+beans.xsd
+items.xsd
+classes/
+
+#HYBRIS_HOME
+build-tools/
+c4c-integration/
+hybris-ems/
+
+hybris-oms/
+hybris-Mobile-Apps-SDK/
+hybris-sbg/
+installer/
+licenses/
+
+copyright/
+libraries/
+.name
+/*.xml
+
+.idea/
+README
+*.iml
+
+build.xml
+dummy.txt
+ruleset.xml
+
+#HYBRIS_HOME/hybris
+hybris/bin/ext-*
+hybris/bin/platform
+hybris/config/*
+!/hybris/config/customize
+!/hybris/config/local.properties
+!/hybris/config/local_dev.properties
+!/hybris/config/local_qas.properties
+!/hybris/config/local_prd.properties
+!/hybris/config/localextensions.xml
+!/hybris/config/platformversion.txt
+hybris/data/
+hybris/log/
+hybris/temp/
+
+#HYBRIS_HOME/hybris/roles
+hybris/roles/role_development/base/data
+hybris/roles/role_development/base/log
+hybris/roles/role_development/base/temp
+hybris/roles/role_development/base/bootstrap
+hybris/roles/role_qas/base/data
+hybris/roles/role_qas/base/log
+hybris/roles/role_qas/base/temp
+hybris/roles/role_qas/base/bootstrap
+hybris/roles/role_development/instance_nmenke/log
+hybris/roles/role_development/instance_nmenke/temp
+hybris/roles/role_development/instance_nmenke/tomcat/work
+
+#Solr specifics
+!/hybris/config/solr
+/hybris/config/solr/*
+!/hybris/config/solr/instances
+/hybris/config/solr/instances/*
+!/hybris/config/solr/instances/default
+/hybris/config/solr/instances/default/*
+!/hybris/config/solr/instances/default/configsets
+/hybris/config/solr/instances/default/configsets/*
+!/hybris/config/solr/instances/default/configsets/default
+/hybris/config/solr/instances/default/configsets/default/*
+!/hybris/config/solr/instances/default/configsets/default/conf
+/hybris/config/solr/instances/default/configsets/default/conf/*
+!/hybris/config/solr/instances/default/configsets/default/conf/lang
+/hybris/config/solr/instances/default/configsets/default/conf/lang/*
+!/hybris/config/solr/instances/default/configsets/default/conf/schema.xml
+!/hybris/config/solr/instances/default/configsets/default/conf/solrconfig.xml
+
+
+!/hybris/config/solr/instances/default/configsets/backoffice
+/hybris/config/solr/instances/default/configsets/backoffice/*
+!/hybris/config/solr/instances/default/configsets/backoffice/conf
+/hybris/config/solr/instances/default/configsets/backoffice/conf/*
+!/hybris/config/solr/instances/default/configsets/backoffice/conf/lang
+/hybris/config/solr/instances/default/configsets/backoffice/conf/lang/*
+!/hybris/config/solr/instances/default/configsets/backoffice/conf/schema.xml
+
+
+#HYBRIS_HOME/hybris/bin
+hybris/bin/**/*.eml
+hybris/bin/**/*.iml
+hybris/bin/**/*.xsd
+!hybris/bin/custom/**/resources/xsd/**/*.xsd
+hybris/bin/**/*.build.number
+hybris/bin/**/platformhome.properties
+hybris/bin/**/classes/*
+hybris/bin/**/testclasses/*
+hybris/bin/**/gensrc/*
+hybris/bin/**/addonsrc/*
+hybris/bin/**/webroot/_ui/responsive/theme-alpha/*
+hybris/bin/**/webroot/_ui/responsive/theme-lambda/*
+hybris/bin/**/webroot/_ui/addons/*
+hybris/bin/**/webroot/WEB-INF/**/addons/*
+hybris/bin/**/.settings/*
+hybris/bin/**/.project/*
+hybris/bin/**/eclipsebin/*
+hybris/bin/**/*-testclasses.xml
+hybris/bin/**/*-webtestclasses.xml
+hybris/bin/**/*hmc.jar
+hybris/config/solr/
+
+#Project specific
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
