@@ -1,0 +1,52 @@
+$catalogVersion=catalogversion(catalog(id[default=electronicsProductCatalog]),version[default='Staged'])
+$supercategories=source(code, $catalogVersion)[unique=true]
+$approved=approvalstatus(code)[default='approved']
+$taxGroup=Europe1PriceFactory_PTG(code)[default=eu-vat-full]
+$prices=europe1prices[translator=de.hybris.platform.europe1.jalo.impex.Europe1PricesTranslator]
+
+INSERT_UPDATE Category;code[unique=true];$catalogVersion;allowedPrincipals(uid)[default='customergroup'];name[$lang];description[$lang]
+;Kitchen;;;;All kitchens;List of all the kitchens
+
+INSERT_UPDATE CategoryCategoryRelation;$categories;$supercategories
+
+INSERT_UPDATE Category;code[unique=true];$catalogVersion;supercategories(code,$catalogVersion);allowedPrincipals(uid)[default='customergroup'];name[$lang];description[$lang]
+;IronKitchen;;Kitchen;;List of iron kitchens;List of kitchens made of iron
+;WoodenKitchen;;Kitchen;;List of wooden kitchens;List of kitchens made of wooden
+;PlasticKitchen;;Kitchen;;List of Plastic kitchens;List of kitchens made of Plastic
+;SimpleKitchen;;Kitchen;;List of simple kitchens;List of kitchens just simple
+;StrangeKitchen;;Kitchen;;List of strange kitchens;List of kitchens just strange
+
+#названия для категорий в базе
+UPDATE Category;code[unique=true];$catalogVersion;name[lang=en];description[lang=en]
+;Kitchen;;Kitchen;Kitchen;
+;IronKitchen;;IronKitchen;Iron Kitchen;
+;WoodenKitchen;;WoodenKitchen;Wooden Kitchen;
+;PlasticKitchen;;PlasticKitchen;Plastic Kitchen;
+;SimpleKitchen;;SimpleKitchen;Simple Kitchen;
+;StrangeKitchen;;StrangeKitchen;Strange Kitchen;
+
+INSERT_UPDATE Product;code[unique=true];$catalogVersion;unit(code)[default='pieces'];supercategories(code,$catalogVersion);$approved;$taxGroup;$prices;name[$lang];summary[$lang];description[$lang]
+;IronKit111;;pieces;IronKitchen;;;999 EUR, 999 USD;Iron Kitchen 1;First iron kitchen;This is the fist kitchen made of iron
+;IronKit222;;pieces;IronKitchen;;;998 EUR, 998 USD;Iron Kitchen 2;Second iron kitchen;This is the second kitchen made of iron
+;IronKit333;;pieces;IronKitchen;;;997 EUR, 997 USD;Iron Kitchen 3;Third iron kitchen;This is the Third kitchen made of iron
+;IronKit444;;pieces;IronKitchen;;;996 EUR, 996 USD;Iron Kitchen 4;FOrth iron kitchen;This is the forth kitchen made of iron
+
+;WoodenKit111;;pieces;WoodenKitchen;;;50 EUR, 888 USD;Wooden Kitchen 1;First Wooden kitchen;This is the fist kitchen made of wood
+;WoodenKit222;;pieces;WoodenKitchen;;;40 EUR, 887 USD;Wooden Kitchen 2;Second Wooden kitchen;This is the second kitchen made of wood
+;WoodenKit333;;pieces;WoodenKitchen;;;30 EUR, 886 USD;Wooden Kitchen 3;Third Wooden kitchen;This is the Third kitchen made of wood
+;WoodenKit444;;pieces;WoodenKitchen;;;20 EUR, 885 USD;Wooden Kitchen 4;FOrth Wooden kitchen;This is the forth kitchen made of wood
+
+;PlasticKit111;;pieces;PlasticKitchen;;;50 EUR, 777 USD;Plastic Kitchen 1;First Plastic kitchen;This is the fist kitchen made of Plastic
+;PlasticKit222;;pieces;PlasticKitchen;;;40 EUR, 776 USD;Plastic Kitchen 2;Second Plastic kitchen;This is the second kitchen made of Plastic
+;PlasticKit333;;pieces;PlasticKitchen;;;30 EUR, 775 USD;Plastic Kitchen 3;Third Plastic kitchen;This is the Third kitchen made of Plastic
+;PlasticKit444;;pieces;PlasticKitchen;;;20 EUR, 774 USD;Plastic Kitchen 4;FOrth Plastic kitchen;This is the forth kitchen made of Plastic
+
+;SimpleKit111;;pieces;SimpleKitchen;;;50 EUR, 60 USD;Simple Kitchen 1;First Simple kitchen;This is the fist Simple kitchen
+;SimpleKit222;;pieces;SimpleKitchen;;;40 EUR, 60 USD;Simple Kitchen 2;Second Simple kitchen;This is the second Simple kitchen
+;SimpleKit333;;pieces;SimpleKitchen;;;30 EUR, 60 USD;Simple Kitchen 3;Third Simple kitchen;This is the Third Simple kitchen
+;SimpleKit444;;pieces;SimpleKitchen;;;20 EUR, 60 USD;Simple Kitchen 4;FOrth Simple kitchen;This is the forth Simple kitchen
+
+;StrangeKit111;;pieces;StrangeKitchen;;;50 EUR, 60 USD;Strange Kitchen 1;First Strange kitchen;This is the fist Strange kitchen
+;StrangeKit222;;pieces;StrangeKitchen;;;30 EUR, 60 USD;Strange Kitchen 2;Second Strange kitchen;This is the second Strange kitchen
+;StrangeKit333;;pieces;StrangeKitchen;;;20 EUR, 60 USD;Strange Kitchen 3;Third Strange kitchen;This is the Third Strange kitchen made
+;StrangeKit444;;pieces;StrangeKitchen;;;10 EUR, 60 USD;Strange Kitchen 4;FOrth Strange kitchen;This is the forth Strange kitchen made

@@ -1,0 +1,9 @@
+#$solrIndexedType = electronicsProductType
+#
+#INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]; name[unique = true]; type(code); sortableType(code); currency[default = true]; localized[default = false]; multiValue[default = false]; facet[default = false]; facetType(code); facetSort(code); priority; visible; useForSpellchecking[default = false]; useForAutocomplete[default = false]; fieldValueProvider             ; facetDisplayNameProvider; customFacetSortProvider; topValuesProvider; rangeSets(name)
+#                                 ; $solrIndexedType                          ; priceWithDiscount  ; double    ;                   ; true                    ;                           ;                            ;                       ;                ;                ;         ;        ;                                     ;                                    ; priceWithDiscountValueProvider ;                         ;                        ;                  ;
+
+$solrIndexedType = electronicsProductType
+
+INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]; name[unique = true]; type(code); localized[default = false]; fieldValueProvider
+                                 ; $solrIndexedType                          ; priceWithDiscount  ; double    ;                       ; priceWithDiscountValueResolver

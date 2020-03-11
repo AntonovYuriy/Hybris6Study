@@ -1,0 +1,72 @@
+$productCatalog=electronicsProductCatalog
+$productCatalogName=Electronics Product Catalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[unique=true];inStockStatus(code);maxPreOrder;maxStockLevelHistoryCount;overSelling;preOrder;productCode[unique=true];reserved
+;123;warehouse_e;notSpecified;1;0;0;0;IronKit111;0
+;124;warehouse_e;notSpecified;1;0;0;0;IronKit222;0
+;125;warehouse_e;notSpecified;1;0;0;0;IronKit333;0
+;126;warehouse_e;notSpecified;1;0;0;0;IronKit444;0
+;123;warehouse_e;notSpecified;1;0;0;0;SimpleKit111;0
+;124;warehouse_e;notSpecified;1;0;0;0;SimpleKit222;0
+;125;warehouse_e;notSpecified;1;0;0;0;SimpleKit333;0
+;126;warehouse_e;notSpecified;1;0;0;0;SimpleKit444;0
+;123;warehouse_e;notSpecified;1;0;0;0;StrangeKit111;0
+;124;warehouse_e;notSpecified;1;0;0;0;StrangeKit222;0
+;125;warehouse_e;notSpecified;1;0;0;0;StrangeKit333;0
+;126;warehouse_e;notSpecified;1;0;0;0;StrangeKit444;0
+;123;warehouse_e;notSpecified;1;0;0;0;WoodenKit111;0
+;124;warehouse_e;notSpecified;1;0;0;0;WoodenKit222;0
+;125;warehouse_e;notSpecified;1;0;0;0;WoodenKit333;0
+;126;warehouse_e;notSpecified;1;0;0;0;WoodenKit444;0
+;123;warehouse_e;notSpecified;1;0;0;0;PlasticKit111;0
+;124;warehouse_e;notSpecified;1;0;0;0;PlasticKit222;0
+;125;warehouse_e;notSpecified;1;0;0;0;PlasticKit333;0
+;126;warehouse_e;notSpecified;1;0;0;0;PlasticKit444;0
+
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[unique=true];inStockStatus(code);maxPreOrder;maxStockLevelHistoryCount;overSelling;preOrder;productCode[unique=true];reserved
+;123;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;IronKit111;0
+;123;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;IronKit111;0
+;124;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;IronKit222;0
+;125;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;IronKit333;0
+;126;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;IronKit444;0
+;123;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;SimpleKit111;0
+;124;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;SimpleKit222;0
+;125;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;SimpleKit333;0
+;126;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;SimpleKit444;0
+;123;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;StrangeKit111;0
+;124;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;StrangeKit222;0
+;125;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;StrangeKit333;0
+;126;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;StrangeKit444;0
+;123;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;WoodenKit111;0
+;124;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;WoodenKit222;0
+;125;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;WoodenKit333;0
+;126;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;WoodenKit444;0
+;123;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;PlasticKit111;0
+;124;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;PlasticKit222;0
+;125;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;PlasticKit333;0
+;126;Kobe Bay Sheraton Hotel and Towers;notSpecified;1;0;0;0;PlasticKit444;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[unique=true];inStockStatus(code);maxPreOrder;maxStockLevelHistoryCount;overSelling;preOrder;productCode[unique=true];reserved
+;123;Nakano;notSpecified;1;0;0;0;IronKit111;0
+;123;Nakano;notSpecified;1;0;0;0;IronKit111;0
+;124;Nakano;notSpecified;1;0;0;0;IronKit222;0
+;125;Nakano;notSpecified;1;0;0;0;IronKit333;0
+;126;Nakano;notSpecified;1;0;0;0;IronKit444;0
+;123;Nakano;notSpecified;1;0;0;0;SimpleKit111;0
+;124;Nakano;notSpecified;1;0;0;0;SimpleKit222;0
+;125;Nakano;notSpecified;1;0;0;0;SimpleKit333;0
+;126;Nakano;notSpecified;1;0;0;0;SimpleKit444;0
+;123;Nakano;notSpecified;1;0;0;0;StrangeKit111;0
+;124;Nakano;notSpecified;1;0;0;0;StrangeKit222;0
+;125;Nakano;notSpecified;1;0;0;0;StrangeKit333;0
+;126;Nakano;notSpecified;1;0;0;0;StrangeKit444;0
+;123;Nakano;notSpecified;1;0;0;0;WoodenKit111;0
+;124;Nakano;notSpecified;1;0;0;0;WoodenKit222;0
+;125;Nakano;notSpecified;1;0;0;0;WoodenKit333;0
+;126;Nakano;notSpecified;1;0;0;0;WoodenKit444;0
+;123;Nakano;notSpecified;1;0;0;0;PlasticKit111;0
+;124;Nakano;notSpecified;1;0;0;0;PlasticKit222;0
+;125;Nakano;notSpecified;1;0;0;0;PlasticKit333;0
+;126;Nakano;notSpecified;1;0;0;0;PlasticKit444;0

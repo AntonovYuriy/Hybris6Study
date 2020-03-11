@@ -1,0 +1,76 @@
+$contentCatalog = electronicsContentCatalog
+$contentCatalogName = Electronics Content Catalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$productCatalog = electronicsProductCatalog
+$productCatalogName = Electronics Product Catalog
+$productCV = catalogVersion(catalog(id[default=$productCatalog]), version[default='Staged'])[unique=true, default=$productCatalog:Staged]
+$siteResource = jar:de.hybris.platform.electronicsstore.constants.ElectronicsstoreConstants&/electronicsstore/import/sampledata/contentCatalogs/$contentCatalog
+$medias = medias(code, $contentCV);
+$mediaContainer = media(qualifier, $contentCV);
+$product = product(code, $productCV)
+$category = category(code, $productCV)
+$jarResourceCms = jar:de.hybris.platform.electronicsstore.constants.ElectronicsstoreConstants&/electronicsstore/import/sampledata/cockpits/cmscockpit
+$media = media(code, $contentCV);
+$productResource = jar:de.hybris.platform.electronicsstore.constants.ElectronicsstoreConstants&/electronicsstore/import/sampledata/productCatalogs/$productCatalog
+$catalogVersion = catalogversion(catalog(id[default=$productCatalog]), version[default='Staged'])[unique=true, default=$productCatalog:Staged]
+
+## level 1. SiteRoot ##
+## level 2. children of SiteRoot ##
+# the following order of children is the display order on the site
+INSERT_UPDATE CMSNavigationNode; uid[unique = true]         ; $contentCV[unique = true]; name       ; parent(uid, $contentCV); &nodeRef                   ; children(uid, $contentCV)
+                               ; ElectronicsCategoryNavNode ;                          ; Categories ; ElectronicsNavNode     ; ElectronicsCategoryNavNode ; KitchenNavNode,BrandsNavNode,DigitalCamerasNavNode,FilmCamerasNavNode,HandheldCamcordersNavNode,WebcamsNavNode,PowerSuppliesNavNode,FlashMemoryNavNode,CameraAccessoriesNavNode
+
+## level 3. children of Category Nav ##
+INSERT_UPDATE CMSNavigationNode; uid[unique = true]; $contentCV[unique = true]; name          ; &nodeRef       ; children(uid, $contentCV)
+                               ; KitchenNavNode    ;                          ; Kitchen Links ; KitchenNavNode ; KitchenLinksNavNode
+
+## entries of the above navigation nodes ##
+INSERT_UPDATE CMSNavigationEntry; uid[unique = true]  ; $contentCV[unique = true]; name                          ; navigationNode(&nodeRef); item(CMSLinkComponent.uid, CMSLinkComponent.$contentCV);
+                                ; KitchenNavNodeEntry ;                          ; Kitchen Navigation Node Entry ; KitchenNavNode          ; KitchenCategoryLink                                    ;
+
+# CMS Link Components
+INSERT_UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]     ; name            ; url                               ; &linkRef               ; &componentRef          ; target(code)[default = 'sameWindow']; $category      ; $product;
+                              ;                          ; KitchenCategoryLink    ; Kitchens Link   ; /Kitchens/c/kitchens              ; KitchenCategoryLink    ; KitchenCategoryLink    ;                                     ; Kitchen        ;         ;
+                              ;                          ; IronKitCategoryLink    ; IronKit Link    ; /Kitchens/IronKit/c/ironkit       ; IronKitCategoryLink    ; IronKitCategoryLink    ;                                     ; IronKitchen    ;         ;
+                              ;                          ; WoodenKitCategoryLink  ; WoodenKit Link  ; /Kitchens/WoodenKit/c/woodenkit   ; WoodenKitCategoryLink  ; WoodenKitCategoryLink  ;                                     ; WoodenKitchen  ;         ;
+                              ;                          ; SimpleKitCategoryLink  ; SimpleKit Link  ; /Kitchens/SimpleKit/c/simplekit   ; SimpleKitCategoryLink  ; SimpleKitCategoryLink  ;                                     ; SimpleKitchen  ;         ;
+                              ;                          ; StrangeKitCategoryLink ; StrangeKit Link ; /Kitchens/StrangeKit/c/strangekit ; StrangeKitCategoryLink ; StrangeKitCategoryLink ;                                     ; StrangeKitchen ;         ;
+                              ;                          ; PlasticKitCategoryLink ; PlasticKit Link ; /Kitchens/PlasticKit/c/plastickit ; PlasticKitCategoryLink ; PlasticKitCategoryLink ;                                     ; PlasticKitchen ;         ;
+
+# названия для компонентов на сайте
+UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]     ; linkName[lang = en]
+                       ;                          ; KitchenCategoryLink    ; "All Kitchens"
+                       ;                          ; IronKitCategoryLink    ; "Iron Kitchens"
+                       ;                          ; SimpleKitCategoryLink  ; "Simple Kitchens"
+                       ;                          ; StrangeKitCategoryLink ; "Strange Kitchens"
+                       ;                          ; WoodenKitCategoryLink  ; "Wooden Kitchens"
+                       ;                          ; PlasticKitCategoryLink ; "Plastic Kitchens"
+
+## level 4. children of NavNode (the following order of children is the display order on the site) ##
+INSERT_UPDATE CMSNavigationNode; uid[unique = true]  ; $contentCV[unique = true]; name          ; &nodeRef            ; children(uid, $contentCV)                                                            ; links(&linkRef);
+## children of KitchenNavNode
+                               ; KitchenLinksNavNode ;                          ; Kitchen Links ; KitchenLinksNavNode ; IronKitNavNode,SimpleKitNavNode,StrangeKitNavNode,WoodenKitNavNode,PlasticKitNavNode ; IronKitCategoryLink,SimpleKitCategoryLink,StrangeKitCategoryLink,WoodenKitCategoryLink,PlasticKitCategoryLink
+
+INSERT_UPDATE CMSNavigationNode; uid[unique = true]  ; $contentCV[unique = true]; title
+                               ; KitchenLinksNavNode ;                          ; All the Kitchens
+
+## level 5. children of above (level 4) nodes ##
+INSERT_UPDATE CMSNavigationNode; uid[unique = true]; $contentCV[unique = true]; name                 ; &nodeRef
+## Kitchens
+                               ; IronKitNavNode    ;                          ; Iron Kitchen Link    ; IronKitNavNode
+                               ; SimpleKitNavNode  ;                          ; Simple Kitchen Link  ; SimpleKitNavNode
+                               ; StrangeKitNavNode ;                          ; Strange Kitchen Link ; StrangeKitNavNode
+                               ; WoodenKitNavNode  ;                          ; Wooden Kitchen Link  ; WoodenKitNavNode
+                               ; PlasticKitNavNode ;                          ; Plastic Kitchen Link ; PlasticKitNavNode
+
+
+## entries of the above navigation nodes ##
+INSERT_UPDATE CMSNavigationEntry; uid[unique = true]     ; $contentCV[unique = true]; name                                  ; navigationNode(&nodeRef); item(CMSLinkComponent.uid, CMSLinkComponent.$contentCV);
+## Kitchen
+                                ; IronKitNavNodeEntry    ;                          ; Iron Kitchen Navigation Node Entry    ; IronKitNavNode          ; IronKitCategoryLink                                    ;
+                                ; SimpleKitNavNodeEntry  ;                          ; Simple Kitchen Navigation Node Entry  ; SimpleKitNavNode        ; SimpleKitCategoryLink                                  ;
+                                ; StrangeKitNavNodeEntry ;                          ; Strange Kitchen Navigation Node Entry ; StrangeKitNavNode       ; StrangeKitCategoryLink                                 ;
+                                ; WoodenKitNavNodeEntry  ;                          ; Wooden Kitchen Navigation Node Entry  ; WoodenKitNavNode        ; WoodenKitCategoryLink                                  ;
+                                ; PlasticKitNavNodeEntry ;                          ; Plastic Kitchen Navigation Node Entry ; PlasticKitNavNode       ; PlasticKitCategoryLink                                 ;
+
+###### Navigation Component Refactor End ######
